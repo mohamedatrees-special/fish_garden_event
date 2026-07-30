@@ -9,19 +9,16 @@
         @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&display=swap');
    
         body {
-            /* استخدام الخط الأميري للنصوص العادية */
             font-family: 'Amiri', serif;
             font-size: 1.1em;
             margin: 0;
             padding: 0;
             color: #333;
-            /* صورة الخلفية ثابتة */
             background: linear-gradient(rgba(244, 247, 246, 0.4), rgba(244, 247, 246, 0.4)), 
                         url('background.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
-        /* استخدام خط الرقعة المزخرف للعناوين */
         h1, h2, h3, h4 {
             font-family: 'Aref Ruqaa', serif;
         }
@@ -68,7 +65,6 @@
             padding: 0 20px;
         }
 
-        /* تنسيق قسم التليجرام والتفاصيل (زجاجي) */
         .info-section {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
@@ -124,7 +120,7 @@
             color: #444;
         }
 
-        .telegram-btn, .strava-btn {
+        .telegram-btn, .strava-btn, .whatsapp-btn {
             display: inline-block;
             color: white;
             text-decoration: none;
@@ -136,21 +132,15 @@
             font-family: 'Amiri', serif;
         }
 
-        .telegram-btn {
-            background-color: #0088cc;
-            box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3);
-        }
-
+        .telegram-btn { background-color: #0088cc; box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3); }
         .telegram-btn:hover { background-color: #006699; transform: translateY(-2px); }
 
-        .strava-btn {
-            background-color: #fc4c02;
-            box-shadow: 0 4px 10px rgba(252, 76, 2, 0.3);
-        }
-
+        .strava-btn { background-color: #fc4c02; box-shadow: 0 4px 10px rgba(252, 76, 2, 0.3); }
         .strava-btn:hover { background-color: #e34402; transform: translateY(-2px); }
 
-        /* نموذج التسجيل */
+        .whatsapp-btn { background-color: #25D366; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
+        .whatsapp-btn:hover { background-color: #128C7E; transform: translateY(-2px); }
+
         .registration-form {
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(12px);
@@ -171,6 +161,7 @@
 
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #222; }
+        .form-group label small { color: #d35400; font-weight: normal; font-size: 0.85em; }
         .form-group input, .form-group select {
             width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.8); 
             border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 8px;
@@ -179,8 +170,19 @@
         .form-group input:focus, .form-group select:focus {
             background: rgba(255, 255, 255, 1); border-color: #1a5238; box-shadow: 0 0 5px rgba(26, 82, 56, 0.3);
         }
+        .form-group select:disabled {
+            background: rgba(230, 230, 230, 0.8); cursor: not-allowed; color: #888;
+        }
 
-        /* قسم التذكارات */
+        /* تنسيق قسم التوصيل */
+        .delivery-section {
+            background: rgba(241, 196, 15, 0.15);
+            border: 1px solid rgba(241, 196, 15, 0.4);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
         .products-inline {
             background: rgba(255, 255, 255, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.6);
@@ -211,12 +213,12 @@
         }
         .buy-btn:hover { background-color: #0f3624; }
 
-        /* شريط السعر الإجمالي */
         .cart-summary {
             background: #1a5238; color: white; padding: 15px; border-radius: 10px; margin-top: 20px; text-align: center; display: none;
         }
         .cart-summary h4 { margin: 0 0 10px 0; font-size: 1.5em; }
         .discount-badge { background: #f1c40f; color: #333; padding: 3px 8px; border-radius: 5px; font-size: 0.8em; margin-right: 10px; font-weight: bold;}
+        .shipping-note { color: #f1c40f; font-size: 0.9em; margin-top: 5px; display: block;}
 
         .submit-btn {
             background-color: #27ae60; color: white; border: none; padding: 18px 30px; font-size: 1.3em;
@@ -263,7 +265,8 @@
             
             <div style="margin-top: 20px;">
                 <a href="#" target="_blank" class="strava-btn">🏃‍♂️ سجل نشاطك على Strava</a>
-                <a href="https://t.me/+KPO5UxhH59IzNWE0" target="_blank" class="telegram-btn">💬 انضم لجروب التليجرام</a>
+                <a href="https://t.me/+KPO5UxhH59IzNWE0" target="_blank" class="telegram-btn">💬 جروب التليجرام</a>
+                <a href="https://chat.whatsapp.com/DxC4fKcwfmr5pirG2x1sXJ?s=sw&p=a&ilr=4&amv=1" target="_blank" class="whatsapp-btn">📱 جروب الواتساب</a>
             </div>
         </section>
 
@@ -273,8 +276,11 @@
             <form id="registrationForm">
                 
                 <div class="form-group">
-                    <label for="name">الاسم بالكامل (كما سيظهر في شهادة المشاركة)</label>
-                    <input type="text" id="name" name="name" placeholder="أدخل اسمك الكريم" required>
+                    <label for="name">
+                        الاسم بالكامل (كما سيظهر في شهادة المشاركة)<br>
+                        <small>يرجى التوضيح باللقب، مثال: atrees(al_3tr)</small>
+                    </label>
+                    <input type="text" id="name" name="name" placeholder="مثال: atrees(al_3tr)" required>
                 </div>
                 
                 <div class="form-group">
@@ -299,21 +305,15 @@
 
                 <div class="form-group">
                     <label for="distance">المسافة المستهدفة</label>
-                    <select id="distance" name="distance" required>
-                        <option value="">-- اختر المسافة --</option>
-                        <option value="60km">60 كم (جري/مشي)</option>
-                        <option value="120km">120 كم (جري/مشي)</option>
-                        <option value="150km">150 كم (جري/مشي)</option>
-                        <option value="200km">200 كم (دراجات)</option>
-                        <option value="300km">300 كم (دراجات)</option>
-                        <option value="400km">400 كم (دراجات)</option>
+                    <select id="distance" name="distance" required disabled>
+                        <option value="">-- يرجى اختيار نوع التحدي أولاً --</option>
                     </select>
                 </div>
 
                 <!-- تذكارات اختيارية -->
                 <div class="products-inline">
                     <h3>تذكارات التحدي 🎁 (اختيارية)</h3>
-                    <p class="note">احصل على قطعتين بخصم 50 ج.م، أو 4 قطع بخصم 100 ج.م، أو المجموعة كاملة بخصم 150 ج.م!</p>
+                    <p class="note">احصل على قطعتين بخصم 100 ج.م، 3 قطع بخصم 150 ج.م، 4 قطع بخصم 200 ج.م، أو المجموعة كاملة بخصم 250 ج.م!</p>
                     
                     <div class="products-grid">
                         
@@ -354,6 +354,28 @@
 
                     </div>
 
+                    <!-- قسم الاستلام يظهر فقط عند اختيار منتجات -->
+                    <div id="delivery_section" class="delivery-section" style="display: none;">
+                        <div class="form-group">
+                            <label for="delivery_method">طريقة استلام التذكارات</label>
+                            <select id="delivery_method" name="delivery_method">
+                                <option value="ايفينت المولد النبوي">الاستلام في إيفينت يوم المولد النبوي (مجاناً)</option>
+                                <option value="دليفري">استلام دليفري (تطبق رسوم الشحن)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="governorate_group" style="display: none;">
+                            <label for="governorate">اختر المحافظة لمعرفة مصاريف الشحن</label>
+                            <select id="governorate" name="governorate">
+                                <option value="">-- اختر المحافظة --</option>
+                                <option value="القاهرة">القاهرة (100 ج.م)</option>
+                                <option value="الجيزة">الجيزة (100 ج.م)</option>
+                                <option value="الإسكندرية">الإسكندرية (100 ج.م)</option>
+                                <option value="محافظة أخرى">باقي المحافظات (150 ج.م)</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <!-- ملخص السلة يظهر عند الاختيار -->
                     <div class="cart-summary" id="cartSummary">
                         <h4>الإجمالي: <span id="totalPrice">0</span> ج.م</h4>
@@ -368,14 +390,75 @@
     </div>
 
     <script>
+        // منطق تغيير المسافات بناءً على التحدي
+        const challengeTypeSelect = document.getElementById('challenge_type');
+        const distanceSelect = document.getElementById('distance');
+
+        const distances = {
+            'Running': [
+                { value: '60km', text: '60 كم (جري)' },
+                { value: '120km', text: '120 كم (جري)' },
+                { value: '150km', text: '150 كم (جري)' }
+            ],
+            'Walking': [
+                { value: '60km', text: '60 كم (مشي)' },
+                { value: '120km', text: '120 كم (مشي)' },
+                { value: '150km', text: '150 كم (مشي)' }
+            ],
+            'Cycling': [
+                { value: '200km', text: '200 كم (دراجات)' },
+                { value: '300km', text: '300 كم (دراجات)' },
+                { value: '400km', text: '400 كم (دراجات)' }
+            ]
+        };
+
+        challengeTypeSelect.addEventListener('change', function() {
+            const selectedType = this.value;
+            distanceSelect.innerHTML = '<option value="">-- اختر المسافة --</option>'; 
+
+            if (selectedType && distances[selectedType]) {
+                distanceSelect.disabled = false;
+                distances[selectedType].forEach(dist => {
+                    const option = document.createElement('option');
+                    option.value = dist.value;
+                    option.textContent = dist.text;
+                    distanceSelect.appendChild(option);
+                });
+            } else {
+                distanceSelect.disabled = true;
+                distanceSelect.innerHTML = '<option value="">-- يرجى اختيار نوع التحدي أولاً --</option>';
+            }
+        });
+
+
+        // منطق المشتريات والتوصيل والخصومات
         const buyButtons = document.querySelectorAll('.buy-btn');
         const selectedProducts = new Map(); 
         const cartSummary = document.getElementById('cartSummary');
         const totalPriceEl = document.getElementById('totalPrice');
         const discountText = document.getElementById('discountText');
         const submitBtn = document.getElementById('submitBtn');
+        
+        // عناصر التوصيل
+        const deliverySection = document.getElementById('delivery_section');
+        const deliveryMethodSelect = document.getElementById('delivery_method');
+        const governorateGroup = document.getElementById('governorate_group');
+        const governorateSelect = document.getElementById('governorate');
 
-        // دالة حساب الإجمالي والخصومات
+        deliveryMethodSelect.addEventListener('change', function() {
+            if (this.value === 'دليفري') {
+                governorateGroup.style.display = 'block';
+                governorateSelect.required = true;
+            } else {
+                governorateGroup.style.display = 'none';
+                governorateSelect.required = false;
+                governorateSelect.value = '';
+            }
+            updateCart();
+        });
+
+        governorateSelect.addEventListener('change', updateCart);
+
         function updateCart() {
             let total = 0;
             let count = selectedProducts.size;
@@ -386,26 +469,52 @@
             let discountMsg = "";
 
             if (count === 5) {
+                discountValue = 250; 
+                discountMsg = "<span class='discount-badge'>خصم 250 ج.م مُطبق!</span> وفرت 250 ج.م";
+            } else if (count === 4) {
+                discountValue = 200;
+                discountMsg = "<span class='discount-badge'>خصم 200 ج.م مُطبق!</span> وفرت 200 ج.م";
+            } else if (count === 3) {
                 discountValue = 150; 
                 discountMsg = "<span class='discount-badge'>خصم 150 ج.م مُطبق!</span> وفرت 150 ج.م";
-            } else if (count === 4) {
-                discountValue = 100;
+            } else if (count === 2) {
+                discountValue = 100; 
                 discountMsg = "<span class='discount-badge'>خصم 100 ج.م مُطبق!</span> وفرت 100 ج.م";
-            } else if (count >= 2) {
-                discountValue = 50; 
-                discountMsg = "<span class='discount-badge'>خصم 50 ج.م مُطبق!</span> وفرت 50 ج.م";
             } else if (count === 1) {
-                discountMsg = "أضف قطعة أخرى لتحصل على خصم 50 ج.م";
+                discountMsg = "أضف قطعة أخرى لتحصل على خصم 100 ج.م";
             }
 
             let finalTotal = total - discountValue;
+            let shippingFee = 0;
 
             if (count > 0) {
+                deliverySection.style.display = 'block';
+                
+                // حساب مصاريف الشحن لو اختار دليفري
+                if (deliveryMethodSelect.value === 'دليفري' && governorateSelect.value) {
+                    if (['القاهرة', 'الجيزة', 'الإسكندرية'].includes(governorateSelect.value)) {
+                        shippingFee = 100;
+                    } else {
+                        shippingFee = 150;
+                    }
+                }
+                
+                finalTotal += shippingFee;
+                
+                let shippingMsg = shippingFee > 0 ? `<span class="shipping-note">(الإجمالي شامل ${shippingFee} ج.م مصاريف شحن)</span>` : "";
+
                 cartSummary.style.display = 'block';
                 totalPriceEl.innerText = finalTotal;
-                discountText.innerHTML = discountMsg;
+                discountText.innerHTML = discountMsg + shippingMsg;
                 submitBtn.innerText = "تأكيد التسجيل وطلب التذكارات (" + finalTotal + " ج.م)";
             } else {
+                // إخفاء قسم التوصيل وتصفيره لو مفيش منتجات
+                deliverySection.style.display = 'none';
+                deliveryMethodSelect.value = 'ايفينت المولد النبوي';
+                governorateGroup.style.display = 'none';
+                governorateSelect.value = '';
+                governorateSelect.required = false;
+
                 cartSummary.style.display = 'none';
                 submitBtn.innerText = "تأكيد التسجيل المجاني";
             }
@@ -420,13 +529,11 @@
                 const productPrice = parseInt(card.getAttribute('data-price'));
                 
                 if (selectedProducts.has(productName)) {
-                    // إزالة المنتج
                     selectedProducts.delete(productName);
                     card.classList.remove('selected-card');
                     button.style.backgroundColor = '#1a5238';
                     button.innerText = 'أضف للتسجيل';
                 } else {
-                    // إضافة المنتج
                     selectedProducts.set(productName, productPrice);
                     card.classList.add('selected-card');
                     button.style.backgroundColor = '#27ae60'; 
@@ -448,13 +555,18 @@
 
             const formData = new FormData(form);
             
-            // إضافة المنتجات المختارة والسعر النهائي للبيانات المرسلة
             const productsList = Array.from(selectedProducts.keys()).join(' ، ');
             formData.append('products', productsList ? productsList : 'بدون تذكارات'); 
             formData.append('total_price', finalAmount);
 
-            // تم وضع رابط Google Apps Script الخاص بك هنا
-            const webAppUrl = 'https://script.google.com/macros/s/AKfycbxOf13OKQiQYzeVZmMXHeGUtimotTJ_gSJDAHGCSt3T8gqyvLhXfP9Wt4K1Z1DqgVdX/exec'; 
+            // لو مشتراش حاجة، مش محتاجين نبعت طريقة التوصيل
+            if (selectedProducts.size === 0) {
+                formData.set('delivery_method', '-');
+                formData.set('governorate', '-');
+            }
+
+            // رابط Google Apps Script الجديد
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycbzdTWC6yDyoqSp3YnMUCzJxMr18dDm4S7H65xfilIaUJRYdP1sVY3eHiSa-Z9BogKS6/exec'; 
 
             fetch(webAppUrl, {
                 method: 'POST',
@@ -465,12 +577,16 @@
                 alert('تم تسجيل بياناتك بنجاح في تحدي مولد النبي ﷺ! تقبل الله منا ومنكم صالح الأعمال.');
                 form.reset();
                 resetCart();
+                distanceSelect.disabled = true;
+                distanceSelect.innerHTML = '<option value="">-- يرجى اختيار نوع التحدي أولاً --</option>';
             })
             .catch(error => {
                 console.error('Error!', error.message);
                 alert('تم إرسال طلبك. شكراً لمشاركتك معنا!');
                 form.reset();
                 resetCart();
+                distanceSelect.disabled = true;
+                distanceSelect.innerHTML = '<option value="">-- يرجى اختيار نوع التحدي أولاً --</option>';
             });
         });
 
