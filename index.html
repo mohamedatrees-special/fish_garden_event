@@ -218,7 +218,7 @@
         }
         .cart-summary h4 { margin: 0 0 10px 0; font-size: 1.5em; }
         .discount-badge { background: #f1c40f; color: #333; padding: 3px 8px; border-radius: 5px; font-size: 0.8em; margin-right: 10px; font-weight: bold;}
-        .shipping-note { color: #f1c40f; font-size: 0.9em; margin-top: 5px; display: block;}
+        .shipping-note { color: #f1c40f; font-size: 0.9em; margin-top: 5px; display: inline-block;}
 
         .submit-btn {
             background-color: #27ae60; color: white; border: none; padding: 18px 30px; font-size: 1.3em;
@@ -313,7 +313,7 @@
                 <!-- تذكارات اختيارية -->
                 <div class="products-inline">
                     <h3>تذكارات التحدي 🎁 (اختيارية)</h3>
-                    <p class="note">احصل على قطعتين بخصم 100 ج.م، 3 قطع بخصم 150 ج.م، 4 قطع بخصم 200 ج.م، أو المجموعة كاملة بخصم 250 ج.م!</p>
+                    <p class="note">احصل على قطعتين أو ثلاثة بخصم 10%، أو 4 قطع فأكثر بخصم 15%!</p>
                     
                     <div class="products-grid">
                         
@@ -360,7 +360,7 @@
                             <label for="delivery_method">طريقة استلام التذكارات</label>
                             <select id="delivery_method" name="delivery_method">
                                 <option value="ايفينت المولد النبوي">الاستلام في إيفينت يوم المولد النبوي (مجاناً)</option>
-                                <option value="دليفري">استلام دليفري (تطبق رسوم الشحن)</option>
+                                <option value="دليفري">استلام دليفري (تطبق رسوم الشحن بعد الخصم)</option>
                             </select>
                         </div>
 
@@ -460,32 +460,28 @@
         governorateSelect.addEventListener('change', updateCart);
 
         function updateCart() {
-            let total = 0;
+            let productsTotal = 0;
             let count = selectedProducts.size;
             
-            selectedProducts.forEach(price => total += price);
+            selectedProducts.forEach(price => productsTotal += price);
 
-            let discountValue = 0;
+            let discountRate = 0;
             let discountMsg = "";
 
-            if (count === 5) {
-                discountValue = 250; 
-                discountMsg = "<span class='discount-badge'>خصم 250 ج.م مُطبق!</span> وفرت 250 ج.م";
-            } else if (count === 4) {
-                discountValue = 200;
-                discountMsg = "<span class='discount-badge'>خصم 200 ج.م مُطبق!</span> وفرت 200 ج.م";
-            } else if (count === 3) {
-                discountValue = 150; 
-                discountMsg = "<span class='discount-badge'>خصم 150 ج.م مُطبق!</span> وفرت 150 ج.م";
-            } else if (count === 2) {
-                discountValue = 100; 
-                discountMsg = "<span class='discount-badge'>خصم 100 ج.م مُطبق!</span> وفرت 100 ج.م";
+            if (count >= 4) {
+                discountRate = 0.15; 
+                discountMsg = `<span class='discount-badge'>خصم 15% مُطبق!</span> وفرت ${productsTotal * discountRate} ج.م`;
+            } else if (count >= 2) {
+                discountRate = 0.10; 
+                discountMsg = `<span class='discount-badge'>خصم 10% مُطبق!</span> وفرت ${productsTotal * discountRate} ج.م`;
             } else if (count === 1) {
-                discountMsg = "أضف قطعة أخرى لتحصل على خصم 100 ج.م";
+                discountMsg = "أضف قطعة أخرى لتحصل على خصم 10%";
             }
 
-            let finalTotal = total - discountValue;
+            // يتم تطبيق الخصم على إجمالي سعر المنتجات فقط
+            let discountedProductsTotal = productsTotal - (productsTotal * discountRate);
             let shippingFee = 0;
+            let finalTotal = 0;
 
             if (count > 0) {
                 deliverySection.style.display = 'block';
@@ -499,14 +495,15 @@
                     }
                 }
                 
-                finalTotal += shippingFee;
+                // إضافة مصاريف الشحن للإجمالي بعد الخصم
+                finalTotal = discountedProductsTotal + shippingFee;
                 
-                let shippingMsg = shippingFee > 0 ? `<span class="shipping-note">(الإجمالي شامل ${shippingFee} ج.م مصاريف شحن)</span>` : "";
+                let shippingMsg = shippingFee > 0 ? `<br><span class="shipping-note">(تم إضافة ${shippingFee} ج.م مصاريف شحن)</span>` : "";
 
                 cartSummary.style.display = 'block';
                 totalPriceEl.innerText = finalTotal;
                 discountText.innerHTML = discountMsg + shippingMsg;
-                submitBtn.innerText = "تأكيد التسجيل وطلب التذكارات (" + finalTotal + " ج.م)";
+                submitBtn.innerText = `تأكيد التسجيل وطلب التذكارات (${finalTotal} ج.م)`;
             } else {
                 // إخفاء قسم التوصيل وتصفيره لو مفيش منتجات
                 deliverySection.style.display = 'none';
@@ -517,6 +514,7 @@
 
                 cartSummary.style.display = 'none';
                 submitBtn.innerText = "تأكيد التسجيل المجاني";
+                finalTotal = 0;
             }
             
             return finalTotal;
@@ -565,7 +563,7 @@
                 formData.set('governorate', '-');
             }
 
-            // رابط Google Apps Script الجديد
+            // رابط Google Apps Script الخاص بك
             const webAppUrl = 'https://script.google.com/macros/s/AKfycbzdTWC6yDyoqSp3YnMUCzJxMr18dDm4S7H65xfilIaUJRYdP1sVY3eHiSa-Z9BogKS6/exec'; 
 
             fetch(webAppUrl, {
