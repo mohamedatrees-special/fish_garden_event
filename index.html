@@ -3,31 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جرية حديقة الأسماك - 4 كم</title>
+    <title>تحدي مولد النبي ﷺ - AGE Group Run</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        /* استدعاء الخطوط الكلاسيكية الدينية من جوجل */
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&display=swap');
    
         body {
-            font-family: 'Tajawal', sans-serif;
+            /* استخدام الخط الأميري للنصوص العادية */
+            font-family: 'Amiri', serif;
+            font-size: 1.1em;
             margin: 0;
             padding: 0;
             color: #333;
-            
             /* صورة الخلفية ثابتة */
             background: linear-gradient(rgba(244, 247, 246, 0.4), rgba(244, 247, 246, 0.4)), 
                         url('background.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
+        /* استخدام خط الرقعة المزخرف للعناوين */
+        h1, h2, h3, h4 {
+            font-family: 'Aref Ruqaa', serif;
+        }
+
         header {
-            background: linear-gradient(135deg, rgba(43, 88, 118, 0.85) 0%, rgba(78, 67, 118, 0.85) 100%);
+            background: linear-gradient(135deg, rgba(43, 88, 118, 0.9) 0%, rgba(13, 82, 53, 0.9) 100%); /* لمسة خضراء تتناسب مع المولد */
             color: white;
             text-align: center;
             padding: 40px 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        /* تنسيق اللوجو */
         .event-logo {
             max-width: 160px; 
             height: auto;
@@ -38,15 +44,22 @@
         }
 
         header h1 {
+            margin: 0 0 10px 0;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header h2 {
             margin: 0 0 15px 0;
-            font-size: 2.5em;
+            font-size: 1.8em;
+            color: #f1c40f;
         }
 
         header p {
-            font-size: 1.2em;
+            font-size: 1.3em;
             max-width: 800px;
             margin: 0 auto;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         .container {
@@ -55,312 +68,391 @@
             padding: 0 20px;
         }
 
-        /* تنسيق قسم التليجرام (زجاجي) */
-        .telegram-section {
-            background: rgba(255, 255, 255, 0.4);
+        /* تنسيق قسم التليجرام والتفاصيل (زجاجي) */
+        .info-section {
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 20px;
+            padding: 25px;
             border-radius: 15px;
             text-align: center;
             margin-bottom: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .telegram-section p {
-            margin: 0 0 15px 0;
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #1d72b4;
+        .info-section h3 {
+            color: #1a5238;
+            margin-top: 0;
+            font-size: 2em;
         }
 
-        .telegram-btn {
+        .distances-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .distance-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(26, 82, 56, 0.2);
+        }
+
+        .distance-card h4 {
+            margin: 0 0 10px 0;
+            color: #1a5238;
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            font-size: 1.5em;
+        }
+
+        .distance-card ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .distance-card ul li {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .telegram-btn, .strava-btn {
             display: inline-block;
-            background-color: #0088cc;
             color: white;
             text-decoration: none;
             padding: 12px 25px;
             border-radius: 25px;
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3);
             transition: all 0.3s ease;
+            margin: 10px 5px;
+            font-family: 'Amiri', serif;
         }
 
-        .telegram-btn:hover {
-            background-color: #006699;
-            transform: translateY(-2px);
+        .telegram-btn {
+            background-color: #0088cc;
+            box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3);
         }
 
-        /* تنسيق نموذج التسجيل الأساسي (تأثير الزجاج الشفاف بنسبة 40%) */
+        .telegram-btn:hover { background-color: #006699; transform: translateY(-2px); }
+
+        .strava-btn {
+            background-color: #fc4c02;
+            box-shadow: 0 4px 10px rgba(252, 76, 2, 0.3);
+        }
+
+        .strava-btn:hover { background-color: #e34402; transform: translateY(-2px); }
+
+        /* نموذج التسجيل */
         .registration-form {
-            background: rgba(255, 255, 255, 0.4); /* شفافية 40% ولون محايد */
-            backdrop-filter: blur(12px); /* تأثير البلور (التمويه) */
-            -webkit-backdrop-filter: blur(12px); /* لدعم متصفحات سفاري */
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.5); /* حدود بيضاء خفيفة لإبراز الزجاج */
+            border: 1px solid rgba(255, 255, 255, 0.5);
             margin-bottom: 40px;
         }
 
         .registration-form h2 {
-            color: #2b5876;
+            color: #1a5238;
             text-align: center;
             margin-bottom: 25px;
-            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+            font-size: 2.2em;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #222; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.8); 
+            border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 8px;
+            font-family: inherit; font-size: 1em; box-sizing: border-box; outline: none; transition: all 0.3s ease;
+        }
+        .form-group input:focus, .form-group select:focus {
+            background: rgba(255, 255, 255, 1); border-color: #1a5238; box-shadow: 0 0 5px rgba(26, 82, 56, 0.3);
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #222;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            /* خانات الإدخال شفافة قليلاً لتتماشى مع التصميم */
-            background: rgba(255, 255, 255, 0.7); 
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            font-family: inherit;
-            box-sizing: border-box;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            background: rgba(255, 255, 255, 0.95);
-            border-color: #2b5876;
-            box-shadow: 0 0 5px rgba(43, 88, 118, 0.3);
-        }
-
-        .form-group small {
-            display: block;
-            color: #444;
-            margin-top: 5px;
-            font-size: 0.85em;
-        }
-
-        /* تنسيق المنتجات المدمجة (زجاجي أيضاً) */
+        /* قسم التذكارات */
         .products-inline {
-            background: rgba(255, 255, 255, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             border-radius: 10px;
             padding: 20px;
             margin: 30px 0;
         }
 
-        .products-inline h3 {
-            text-align: center;
-            color: #2b5876;
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
+        .products-inline h3 { text-align: center; color: #1a5238; margin-top: 0; margin-bottom: 5px; font-size: 1.8em; }
+        .products-inline p.note { text-align: center; color: #d35400; font-weight: bold; margin-bottom: 20px; }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
 
         .product-card {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: rgba(255, 255, 255, 0.9); padding: 15px; border-radius: 10px;
+            text-align: center; border: 2px solid transparent; transition: transform 0.3s, border-color 0.3s;
         }
+        .product-card.selected-card { border-color: #27ae60; background: #f0fdf4; }
+        .product-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 
-        .product-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .product-icon {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .product-title {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #4e4376;
-            margin-bottom: 8px;
-        }
-
-        .product-desc {
-            font-size: 0.85em;
-            color: #444;
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
+        .product-icon { font-size: 2.5em; margin-bottom: 10px; }
+        .product-title { font-size: 1.2em; font-weight: bold; color: #1a5238; margin-bottom: 5px; }
+        .product-price { font-size: 1.3em; font-weight: bold; color: #27ae60; margin-bottom: 10px; }
         
         .buy-btn {
-            background-color: #2b5876;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: inherit;
-            transition: background 0.3s;
-            width: 100%;
+            background-color: #1a5238; color: white; border: none; padding: 8px 15px;
+            border-radius: 5px; cursor: pointer; font-family: inherit; font-size: 1em; transition: background 0.3s; width: 100%;
         }
-        
-        .buy-btn:hover {
-            background-color: #4e4376;
-        }
+        .buy-btn:hover { background-color: #0f3624; }
 
-        /* زر التأكيد النهائي */
+        /* شريط السعر الإجمالي */
+        .cart-summary {
+            background: #1a5238; color: white; padding: 15px; border-radius: 10px; margin-top: 20px; text-align: center; display: none;
+        }
+        .cart-summary h4 { margin: 0 0 10px 0; font-size: 1.5em; }
+        .discount-badge { background: #f1c40f; color: #333; padding: 3px 8px; border-radius: 5px; font-size: 0.8em; margin-right: 10px; font-weight: bold;}
+
         .submit-btn {
-            background-color: #27ae60;
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            font-size: 1.2em;
-            font-weight: bold;
-            border-radius: 10px;
-            cursor: pointer;
-            width: 100%;
-            font-family: inherit;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+            background-color: #27ae60; color: white; border: none; padding: 18px 30px; font-size: 1.3em;
+            font-weight: bold; border-radius: 10px; cursor: pointer; width: 100%; font-family: inherit; margin-top: 20px;
+            transition: all 0.3s; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
         }
-
-        .submit-btn:hover {
-            background-color: #219653;
-            transform: translateY(-2px);
-        }
-
-        .submit-btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-            box-shadow: none;
-            transform: none;
-        }
-
+        .submit-btn:hover { background-color: #219653; transform: translateY(-2px); }
+        .submit-btn:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; transform: none; color: #666; }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="logo.png" alt="لوجو فعالية الجري" class="event-logo">
-        <h1>فعالية الجري في حديقة الأسماك 🏃‍♂️</h1>
-        <p>انضم إلينا في جرية ترفيهية لمسافة <strong>4 كيلومتر</strong>! تهدف هذه الفعالية إلى رفع الروح المعنوية وتقوية الروابط بين هواة الجري. استعد لقضاء وقت رائع، حيث ستتخلل الفعالية أنشطة مشتركة وتحديات ممتعة بين جميع المتواجدين في أجواء حديقة الأسماك الساحرة.</p>
+        <img src="logo.png" alt="AGE Group Run Logo" class="event-logo">
+        <h1>🌙 تحدي مولد النبي ﷺ 🌙</h1>
+        <h2>احتفالًا بذكرى مولد خير خلق الله ❤️</h2>
+        <p>يسر فريق <strong>AGE Group Run</strong> دعوتكم لتحدي رياضي افتراضي مجاني بالكامل ومفتوح للجميع من أي مكان 🌍<br>
+        «المؤمن القوي خير وأحب إلى الله من المؤمن الضعيف، وفي كل خير»</p>
     </header>
 
     <div class="container">
         
-        <section class="telegram-section">
-            <p>📢 لمتابعة التحديثات والفعاليات المشتركة وموقع التجمع داخل الحديقة، انضم لجروب التليجرام الرسمي:</p>
-            <a href="https://t.me/+KPO5UxhH59IzNWE0" target="_blank" class="telegram-btn">💬 انضمام لجروب التليجرام</a>
+        <!-- تفاصيل التحدي -->
+        <section class="info-section">
+            <h3>📅 مدة التحدي: من 1 أغسطس حتى 31 أغسطس 2026</h3>
+            <p>التسجيل وشهادة المشاركة مجاناً بالكامل. اختر التحدي المناسب لك وتابع نشاطك عبر تطبيق Strava:</p>
+            
+            <div class="distances-grid">
+                <div class="distance-card">
+                    <h4>🏃‍♂️ تحدي الجري</h4>
+                    <ul><li>60 كم</li><li>120 كم</li><li>150 كم</li></ul>
+                </div>
+                <div class="distance-card">
+                    <h4>🚶‍♂️ تحدي المشي</h4>
+                    <ul><li>60 كم</li><li>120 كم</li><li>150 كم</li></ul>
+                </div>
+                <div class="distance-card">
+                    <h4>🚴‍♂️ تحدي الدراجات</h4>
+                    <ul><li>200 كم</li><li>300 كم</li><li>400 كم</li></ul>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px; font-weight: bold; color: #d35400;">🏆 تحدي الأبطال (10 كم): تحدٍ تنافسي خاص لأبطال التحدي بجوائز عينية مميزة!</p>
+            
+            <div style="margin-top: 20px;">
+                <a href="#" target="_blank" class="strava-btn">🏃‍♂️ سجل نشاطك على Strava</a>
+                <a href="https://t.me/+KPO5UxhH59IzNWE0" target="_blank" class="telegram-btn">💬 انضم لجروب التليجرام</a>
+            </div>
         </section>
 
+        <!-- نموذج التسجيل -->
         <section class="registration-form">
-            <h2>سجل الآن في الفعالية</h2>
+            <h2>استمارة التسجيل والمشاركة</h2>
             <form id="registrationForm">
                 
                 <div class="form-group">
-                    <label for="name">الاسم بالكامل (باللغة الإنجليزية فقط)</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name in English" required>
-                    <small>ملاحظة: الخانة تقبل الحروف الإنجليزية فقط، وسيتم إزالة أي مسافات زائدة في البداية تلقائياً.</small>
+                    <label for="name">الاسم بالكامل (كما سيظهر في شهادة المشاركة)</label>
+                    <input type="text" id="name" name="name" placeholder="أدخل اسمك الكريم" required>
                 </div>
                 
+                <!-- إضافة حقل تاريخ الميلاد ليتوافق مع الشيت -->
                 <div class="form-group">
                     <label for="dob">تاريخ الميلاد</label>
                     <input type="date" id="dob" name="dob" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="whatsapp">رقم الواتساب</label>
                     <input type="tel" id="whatsapp" name="whatsapp" placeholder="مثال: 01xxxxxxxxx" required>
                 </div>
 
+                <div class="form-group">
+                    <label for="challenge_type">نوع التحدي المفضل</label>
+                    <select id="challenge_type" name="challenge_type" required>
+                        <option value="">-- اختر نوع النشاط --</option>
+                        <option value="Running">جري 🏃‍♂️</option>
+                        <option value="Walking">مشي 🚶‍♂️</option>
+                        <option value="Cycling">دراجات 🚴‍♂️</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="distance">المسافة المستهدفة</label>
+                    <select id="distance" name="distance" required>
+                        <option value="">-- اختر المسافة --</option>
+                        <option value="60km">60 كم (جري/مشي)</option>
+                        <option value="120km">120 كم (جري/مشي)</option>
+                        <option value="150km">150 كم (جري/مشي)</option>
+                        <option value="200km">200 كم (دراجات)</option>
+                        <option value="300km">300 كم (دراجات)</option>
+                        <option value="400km">400 كم (دراجات)</option>
+                    </select>
+                </div>
+
+                <!-- تذكارات اختيارية -->
                 <div class="products-inline">
-                    <h3>منتجات الفعالية المميزة 🛍️ (اختياري)</h3>
+                    <h3>تذكارات التحدي 🎁 (اختيارية)</h3>
+                    <p class="note">احصل على قطعتين فأكثر واستمتع بخصم 10%، أو اطلب المجموعة كاملة بخصم 15%!</p>
+                    
                     <div class="products-grid">
                         
-                        <div class="product-card">
-                            <div class="product-icon">👕</div>
-                            <div class="product-title">تيشيرت الفعالية</div>
-                            <div class="product-desc">تيشيرت رياضي مريح وخفيف مصمم خصيصاً للجرية.</div>
-                            <button type="button" class="buy-btn">أضف للتسجيل</button>
-                        </div>
-
-                        <div class="product-card">
+                        <div class="product-card" data-price="150" data-name="ميدالية التحدي">
                             <div class="product-icon">🏅</div>
-                            <div class="product-title">ميدالية تذكارية</div>
-                            <div class="product-desc">ميدالية معدنية فاخرة لتحتفظ بذكرى إنجازك.</div>
+                            <div class="product-title">ميدالية التحدي</div>
+                            <div class="product-price">150 ج.م</div>
                             <button type="button" class="buy-btn">أضف للتسجيل</button>
                         </div>
 
-                        <div class="product-card">
+                        <div class="product-card" data-price="250" data-name="تيشيرت التحدي">
+                            <div class="product-icon">👕</div>
+                            <div class="product-title">تيشيرت التحدي</div>
+                            <div class="product-price">250 ج.م</div>
+                            <button type="button" class="buy-btn">أضف للتسجيل</button>
+                        </div>
+
+                        <div class="product-card" data-price="350" data-name="حامل ميداليات">
                             <div class="product-icon">🏆</div>
                             <div class="product-title">حامل ميداليات</div>
-                            <div class="product-desc">حامل أنيق لتعليق ميدالياتك الرياضية بكل فخر.</div>
+                            <div class="product-price">350 ج.م</div>
+                            <button type="button" class="buy-btn">أضف للتسجيل</button>
+                        </div>
+
+                        <div class="product-card" data-price="100" data-name="كاب رياضي">
+                            <div class="product-icon">🧢</div>
+                            <div class="product-title">كاب رياضي</div>
+                            <div class="product-price">100 ج.م</div>
+                            <button type="button" class="buy-btn">أضف للتسجيل</button>
+                        </div>
+
+                        <div class="product-card" data-price="150" data-name="شابوه حريمي">
+                            <div class="product-icon">👒</div>
+                            <div class="product-title">شابوه حريمي</div>
+                            <div class="product-price">150 ج.م</div>
                             <button type="button" class="buy-btn">أضف للتسجيل</button>
                         </div>
 
                     </div>
+
+                    <!-- ملخص السلة يظهر عند الاختيار -->
+                    <div class="cart-summary" id="cartSummary">
+                        <h4>الإجمالي: <span id="totalPrice">0</span> ج.م</h4>
+                        <p id="discountText" style="margin: 0;"></p>
+                    </div>
+
                 </div>
 
-                <button type="submit" class="submit-btn" id="submitBtn">تأكيد التسجيل واختيار المنتجات</button>
+                <button type="submit" class="submit-btn" id="submitBtn">تأكيد التسجيل المجاني</button>
             </form>
         </section>
     </div>
 
     <script>
-        const nameInput = document.getElementById('name');
-        
-        nameInput.addEventListener('input', function(e) {
-            let value = e.target.value;
-            value = value.replace(/^\s+/, ''); 
-            value = value.replace(/[^A-Za-z\s]/g, ''); 
-            e.target.value = value;
-        });
-
         const buyButtons = document.querySelectorAll('.buy-btn');
-        const selectedProducts = new Set();
+        const selectedProducts = new Map(); 
+        const cartSummary = document.getElementById('cartSummary');
+        const totalPriceEl = document.getElementById('totalPrice');
+        const discountText = document.getElementById('discountText');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // دالة حساب الإجمالي والخصومات
+        function updateCart() {
+            let total = 0;
+            let count = selectedProducts.size;
+            
+            selectedProducts.forEach(price => total += price);
+
+            let discountRate = 0;
+            let discountMsg = "";
+
+            if (count === 5) {
+                discountRate = 0.15; // خصم 15% للمجموعة كاملة
+                discountMsg = "<span class='discount-badge'>خصم 15% مُطبق!</span> وفرت " + (total * discountRate) + " ج.م";
+            } else if (count >= 2) {
+                discountRate = 0.10; // خصم 10% لقطعتين أو أكثر
+                discountMsg = "<span class='discount-badge'>خصم 10% مُطبق!</span> وفرت " + (total * discountRate) + " ج.م";
+            } else if (count === 1) {
+                discountMsg = "أضف قطعة أخرى لتحصل على خصم 10%";
+            }
+
+            let finalTotal = total - (total * discountRate);
+
+            if (count > 0) {
+                cartSummary.style.display = 'block';
+                totalPriceEl.innerText = finalTotal;
+                discountText.innerHTML = discountMsg;
+                submitBtn.innerText = "تأكيد التسجيل وطلب التذكارات (" + finalTotal + " ج.م)";
+            } else {
+                cartSummary.style.display = 'none';
+                submitBtn.innerText = "تأكيد التسجيل المجاني";
+            }
+            
+            return finalTotal;
+        }
 
         buyButtons.forEach(button => {
             button.addEventListener('click', () => {
-                const productTitle = button.parentElement.querySelector('.product-title').innerText;
+                const card = button.closest('.product-card');
+                const productName = card.getAttribute('data-name');
+                const productPrice = parseInt(card.getAttribute('data-price'));
                 
-                if (selectedProducts.has(productTitle)) {
-                    selectedProducts.delete(productTitle);
-                    button.classList.remove('selected');
-                    button.style.backgroundColor = '#2b5876';
+                if (selectedProducts.has(productName)) {
+                    // إزالة المنتج
+                    selectedProducts.delete(productName);
+                    card.classList.remove('selected-card');
+                    button.style.backgroundColor = '#1a5238';
                     button.innerText = 'أضف للتسجيل';
                 } else {
-                    selectedProducts.add(productTitle);
-                    button.classList.add('selected');
+                    // إضافة المنتج
+                    selectedProducts.set(productName, productPrice);
+                    card.classList.add('selected-card');
                     button.style.backgroundColor = '#27ae60'; 
                     button.innerText = 'تمت الإضافة ✓';
                 }
+                updateCart();
             });
         });
 
+        // إرسال البيانات
         const form = document.getElementById('registrationForm');
-        const submitBtn = document.getElementById('submitBtn');
 
         form.addEventListener('submit', function(e) {
             e.preventDefault(); 
             
-            submitBtn.innerText = 'جاري إرسال البيانات...';
+            const finalAmount = updateCart();
+            submitBtn.innerText = 'جاري تسجيل البيانات...';
             submitBtn.disabled = true;
 
             const formData = new FormData(form);
-            formData.append('products', Array.from(selectedProducts).join(' ، ')); 
+            
+            // إضافة المنتجات المختارة والسعر النهائي للبيانات المرسلة
+            const productsList = Array.from(selectedProducts.keys()).join(' ، ');
+            formData.append('products', productsList ? productsList : 'بدون تذكارات'); 
+            formData.append('total_price', finalAmount);
 
-            const webAppUrl = 'https://script.google.com/macros/s/AKfycbzw_K8A5Jkowo-seRcAteHwjAlJ51KGRDXQ6TwaB2OtMUPOV2EVQGkH4dZ2hETELQQB/exec'; 
+            // تم وضع رابط Google Apps Script الخاص بك هنا
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycbxOf13OKQiQYzeVZmMXHeGUtimotTJ_gSJDAHGCSt3T8gqyvLhXfP9Wt4K1Z1DqgVdX/exec'; 
 
             fetch(webAppUrl, {
                 method: 'POST',
@@ -368,26 +460,28 @@
             })
             .then(response => response.json())
             .then(data => {
-                alert('تم تسجيل بياناتك بنجاح ونقلها للجوجل شيت مباشرة!');
+                alert('تم تسجيل بياناتك بنجاح في تحدي مولد النبي ﷺ! تقبل الله منا ومنكم صالح الأعمال.');
                 form.reset();
-                buyButtons.forEach(btn => {
-                    btn.style.backgroundColor = '#2b5876';
-                    btn.innerText = 'أضف للتسجيل';
-                });
-                selectedProducts.clear();
-                submitBtn.innerText = 'تأكيد التسجيل واختيار المنتجات';
-                submitBtn.disabled = false;
+                resetCart();
             })
             .catch(error => {
                 console.error('Error!', error.message);
-                alert('تم الإرسال بنجاح! تفقد ملف الجوجل شيت الخاص بك.');
+                alert('تم إرسال طلبك. شكراً لمشاركتك معنا!');
                 form.reset();
-                submitBtn.innerText = 'تأكيد التسجيل واختيار المنتجات';
-                submitBtn.disabled = false;
+                resetCart();
             });
         });
+
+        function resetCart() {
+            selectedProducts.clear();
+            buyButtons.forEach(btn => {
+                btn.closest('.product-card').classList.remove('selected-card');
+                btn.style.backgroundColor = '#1a5238';
+                btn.innerText = 'أضف للتسجيل';
+            });
+            updateCart();
+            submitBtn.disabled = false;
+        }
     </script>
 </body>
 </html>
-
-
