@@ -27,7 +27,7 @@
         }
 
         header {
-            background: linear-gradient(135deg, rgba(43, 88, 118, 0.9) 0%, rgba(13, 82, 53, 0.9) 100%); /* لمسة خضراء تتناسب مع المولد */
+            background: linear-gradient(135deg, rgba(43, 88, 118, 0.9) 0%, rgba(13, 82, 53, 0.9) 100%);
             color: white;
             text-align: center;
             padding: 40px 20px;
@@ -277,7 +277,6 @@
                     <input type="text" id="name" name="name" placeholder="أدخل اسمك الكريم" required>
                 </div>
                 
-                <!-- إضافة حقل تاريخ الميلاد ليتوافق مع الشيت -->
                 <div class="form-group">
                     <label for="dob">تاريخ الميلاد</label>
                     <input type="date" id="dob" name="dob" required>
@@ -314,7 +313,7 @@
                 <!-- تذكارات اختيارية -->
                 <div class="products-inline">
                     <h3>تذكارات التحدي 🎁 (اختيارية)</h3>
-                    <p class="note">احصل على قطعتين فأكثر واستمتع بخصم 10%، أو اطلب المجموعة كاملة بخصم 15%!</p>
+                    <p class="note">احصل على قطعتين بخصم 50 ج.م، أو 4 قطع بخصم 100 ج.م، أو المجموعة كاملة بخصم 150 ج.م!</p>
                     
                     <div class="products-grid">
                         
@@ -383,20 +382,23 @@
             
             selectedProducts.forEach(price => total += price);
 
-            let discountRate = 0;
+            let discountValue = 0;
             let discountMsg = "";
 
             if (count === 5) {
-                discountRate = 0.15; // خصم 15% للمجموعة كاملة
-                discountMsg = "<span class='discount-badge'>خصم 15% مُطبق!</span> وفرت " + (total * discountRate) + " ج.م";
+                discountValue = 150; 
+                discountMsg = "<span class='discount-badge'>خصم 150 ج.م مُطبق!</span> وفرت 150 ج.م";
+            } else if (count === 4) {
+                discountValue = 100;
+                discountMsg = "<span class='discount-badge'>خصم 100 ج.م مُطبق!</span> وفرت 100 ج.م";
             } else if (count >= 2) {
-                discountRate = 0.10; // خصم 10% لقطعتين أو أكثر
-                discountMsg = "<span class='discount-badge'>خصم 10% مُطبق!</span> وفرت " + (total * discountRate) + " ج.م";
+                discountValue = 50; 
+                discountMsg = "<span class='discount-badge'>خصم 50 ج.م مُطبق!</span> وفرت 50 ج.م";
             } else if (count === 1) {
-                discountMsg = "أضف قطعة أخرى لتحصل على خصم 10%";
+                discountMsg = "أضف قطعة أخرى لتحصل على خصم 50 ج.م";
             }
 
-            let finalTotal = total - (total * discountRate);
+            let finalTotal = total - discountValue;
 
             if (count > 0) {
                 cartSummary.style.display = 'block';
